@@ -1,6 +1,6 @@
 package parser
 
-import expr.AbstractExpr
+import expr.Expr
 import java.util.*
 
 typealias TokenizeFunc = (data: String) -> Queue<String>
@@ -12,9 +12,9 @@ abstract class AbstractParser<T>(data: String, tokenizer: TokenizeFunc) {
     /**
      * @return root expression
      */
-    abstract fun parse(): AbstractExpr<T>
+    abstract fun parse(): Expr<T>
 
-    protected fun consume(func: () -> AbstractExpr<T>): AbstractExpr<T> {
+    protected fun consume(func: () -> Expr<T>): Expr<T> {
         tokens.poll()
         return func()
     }

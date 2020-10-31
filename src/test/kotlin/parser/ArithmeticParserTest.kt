@@ -45,4 +45,19 @@ internal class ArithmeticParserTest {
     fun parse8() {
         assertEquals(ArithmeticParser("6 * 2 * 3 + 1").parse().evaluate().toDouble(), 37.00)
     }
+
+    @Test
+    fun parse9() {
+        assertEquals(ArithmeticParser("6 * 2 * (3 + 1)").parse().evaluate().toDouble(), 48.00)
+    }
+
+    @Test
+    fun parse10() {
+        assertEquals(ArithmeticParser("(6 * 2) * 3 + 1").parse().evaluate().toDouble(), 37.00)
+    }
+
+    @Test
+    fun parse11() {
+        assertEquals(ArithmeticParser("(6 * 2) * (3 + 1)").parse().evaluate().toDouble(), 48.00)
+    }
 }

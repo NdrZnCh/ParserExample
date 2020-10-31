@@ -3,9 +3,11 @@ package parser
 import expr.AbstractExpr
 import java.util.*
 
-abstract class AbstractParser<T>(data: String) {
+typealias TokenizeFunc = (data: String) -> Queue<String>
 
-    protected val tokens = LinkedList(StringTokenizer(data).toList().map { it.toString() })
+abstract class AbstractParser<T>(data: String, tokenizer: TokenizeFunc) {
+
+    protected val tokens: Queue<String> = tokenizer(data)
 
     /**
      * @return root expression
